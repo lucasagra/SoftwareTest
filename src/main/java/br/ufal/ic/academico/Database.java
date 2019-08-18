@@ -9,10 +9,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
 
-/**
- *
- * @author Willy
- */
+
+
 @Slf4j
 public class Database extends AbstractDAO<Object> {
     
@@ -52,21 +50,11 @@ public class Database extends AbstractDAO<Object> {
         return subjects;
     }
 
-//    public List<Object> getEnrolledSubjects(Student student) throws HibernateException {
-//        log.info("getting enrolled Subjects for student: " + student.getName());
-//
-//        List<Object> subjects = currentSession().createQuery("Select st.enrolledSubjects From Student st where st.id = " + student.getId()).list();
-//
-//        //subjects.stream().forEach(o -> System.out.println(o.toString()));
-//        return subjects;
-//    }
-
     public List<Object> getCompletedSubjects(Student student) throws HibernateException {
         log.info("getting completed Subjects for student: " + student.getName());
 
         List<Object> subjects = currentSession().createQuery("Select st.completedSubjects From Student st where st.id = " + student.getId()).list();
 
-        //0subjects.stream().forEach(o -> System.out.println(o.toString()));
         return subjects;
     }
 
@@ -75,7 +63,6 @@ public class Database extends AbstractDAO<Object> {
 
         List<Object> subjects = currentSession().createQuery("Select s.subjectsRequired From Subject s where s.id = " + subject.getId()).list();
 
-        //subjects.stream().forEach(o -> System.out.println(o.toString()));
         return subjects;
     }
 
@@ -84,7 +71,6 @@ public class Database extends AbstractDAO<Object> {
 
         List<Object> offers = currentSession().createQuery("Select o From Offer o where o.subject.id = " + subject.getId()).list();
 
-        //offers.stream().forEach(o -> System.out.println(o.toString()));
         return offers;
     }
 
@@ -93,7 +79,6 @@ public class Database extends AbstractDAO<Object> {
 
         List<Object> offers = currentSession().createQuery("Select o From Offer o where o.secretary.id = " + secretary.getId()).list();
 
-        //offers.stream().forEach(o -> System.out.println(o.toString()));
         return offers;
     }
 
@@ -102,7 +87,6 @@ public class Database extends AbstractDAO<Object> {
 
         List<Object> students = currentSession().createQuery("Select std From Student std JOIN std.enrolledSubjects ofrs where ofrs.id = " + offer.getId()).list();
 
-        //offers.stream().forEach(o -> System.out.println(o.toString()));
         return students;
     }
 

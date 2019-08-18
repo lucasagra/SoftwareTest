@@ -11,21 +11,18 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-/**
- *
- * @author Willy
- */
 @Getter
 @Setter
 @ToString
+
 public class ConfigApp extends Configuration {
 
     public enum Type {
         GRADUATE, POST_GRADUATE
     }
 
-    private String university;
     private String state;
+    private String universitAy;
     private int port;
     
     @Valid
